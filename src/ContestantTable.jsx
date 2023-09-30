@@ -7,16 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createData(entryNumber, baker, confection) {
+    return { entryNumber, baker, confection };
 }
 
 const rows = [
-    createData('Lorelei', 'Chocolate Chip Cookies', 1),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    createData(1, 'Lorelei', 'Chocolate Chip Cookies')
 ];
 
 export default function ContestantTable() {
@@ -25,22 +21,23 @@ export default function ContestantTable() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Baker</TableCell>
+                        <TableCell>Entry Number</TableCell>
+                        <TableCell align="right">Baker</TableCell>
                         <TableCell align="right">Confection</TableCell>
-                        <TableCell align="right">Entry Number</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row.entryNumber}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {row.entryNumber}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
+                            <TableCell align="right">{row.entryNumber}</TableCell>
+                            <TableCell align="right">{row.baker}</TableCell>
+                            <TableCell align="right">{row.confection}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
