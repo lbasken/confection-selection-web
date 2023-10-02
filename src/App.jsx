@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import ContestantPage from "./pages/ContestantPage/ContestantPage.jsx";
 import SignInPage from "./pages/SignInPage/SignInPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
+import VotingPage from "./pages/VotingPage/VotingPage.jsx";
 import BasicAppBar from "./BasicAppBar.jsx";
 import './App.css'
 
@@ -21,6 +22,7 @@ export default function App() {
         <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/contestants" element={<ContestantPage />}/>
+            <Route path="/vote" element={<VotingPage />}/>
             <Route path="*" element={<NotFoundPage />}/>
 
         </Routes>

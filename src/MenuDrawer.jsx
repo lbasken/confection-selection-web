@@ -36,7 +36,8 @@ export default function MenuDrawer() {
             </List>
             <Divider />
             <List>
-                <MenuItem><Link to="/contestants">Contestants</Link></MenuItem>
+                <MenuItem><Link to="/contestants">Contestant List</Link></MenuItem>
+                <MenuItem><Link to="/vote">Vote Here</Link></MenuItem>
             </List>
         </Box>
     );
