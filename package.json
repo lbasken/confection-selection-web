@@ -17,6 +17,7 @@
     "@mui/x-data-grid": "^6.16.0",
     "firebase": "^10.4.0",
     "firebaseui": "^6.1.0",
+    "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0"

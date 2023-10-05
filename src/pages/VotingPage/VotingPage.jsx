@@ -1,42 +1,22 @@
 import React from "react";
+import {Field, Form, Formik} from "formik";
+import {Button, TextField} from "@mui/material";
+import "./VotingPage.css";
 
 export default function VotingPage() {
 
-    function handleSubmit(e) {
-        // Prevent the browser from reloading the page
-        e.preventDefault();
+    const onSubmit = (formState, formEvent) => {
+        console.log(formState, formEvent);
+    };
 
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-
-        // You can pass formData as a fetch body directly:
-        // fetch('https://api-zgnozpscca-uc.a.run.app/contestant', { method: form.method, body: formData });
-
-        // Or you can work with it as a plain object:
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
-    }
-
-    return (
-        <form method="post" onSubmit={handleSubmit}>
-            <label>
-                Text input: <input name="myInput" defaultValue="Some initial value" />
-            </label>
-            <hr />
-            <label>
-                Checkbox: <input type="checkbox" name="myCheckbox" defaultChecked={true} />
-            </label>
-            <hr />
-            <p>
-                Radio buttons:
-                <label><input type="radio" name="myRadio" value="option1" /> Option 1</label>
-                <label><input type="radio" name="myRadio" value="option2" defaultChecked={true} /> Option 2</label>
-                <label><input type="radio" name="myRadio" value="option3" /> Option 3</label>
-            </p>
-            <hr />
-            <button type="reset">Reset form</button>
-            <button type="submit">Submit form</button>
-        </form>
-    );
+    return <div className="form">
+        <Formik initialValues={{email: "", password: ""}} onSubmit={onSubmit}>
+            <Form>
+                <Field name="email">{(props) => <TextField required fullWidth type="email" label="Email" {...props.field} />}</Field>
+                <Field name="password">{(props) => <TextField required fullWidth type="password" label="Password" {...props.field} />}</Field>
+                <Field name="when">{(props) => <TextField required fullWidth type="date" label="When" {...props.field} />}</Field>
+                <Button variant="contained" type="submit">SIGN IN</Button>
+            </Form>
+        </Formik>
+    </div>
 }
