@@ -9,7 +9,6 @@ export default function ScrollingNewsfeed() {
             .then(response => response.json())
             .then(items => {
                 setFacts(items);
-                console.log(items);
             });
     }, []);
 

@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import {MenuItem} from "@mui/material";
+import "./MenuDrawer.css";
 
 export default function MenuDrawer() {
     const [state, setState] = React.useState({
@@ -46,7 +47,7 @@ export default function MenuDrawer() {
         <div>
             {['left'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
+                    <Button className="menu-icon" onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}
