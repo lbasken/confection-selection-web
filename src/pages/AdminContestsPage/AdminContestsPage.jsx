@@ -3,6 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import AddIcon from '@mui/icons-material/Add';
 import {useEffect, useState} from "react";
 import "./AdminContestsPage.css";
+import {Link} from "react-router-dom";
 
 const columns = [
     {field: 'name'},
@@ -25,6 +26,6 @@ export default function AdminContestsPage() {
     return <div>
         <h1>All Contests</h1>
         <DataGrid style={{height: "100%"}} getRowId={(row) =>  row.name + row.id } rows={rows} columns={columns} />
-        <button><AddIcon /></button>
+        <button><Link to="/admin-create-contests"><AddIcon /></Link></button>
     </div>
 }
