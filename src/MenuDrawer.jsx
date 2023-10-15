@@ -37,8 +37,10 @@ export default function MenuDrawer() {
             </List>
             <Divider />
             <List>
-                <MenuItem><Link to="/contestants">Contestant List</Link></MenuItem>
-                <MenuItem><Link to="/vote">Vote Here</Link></MenuItem>
+                {/*<MenuItem><Link to="/contestants">Contestant List</Link></MenuItem>*/}
+                {/*<MenuItem><Link to="/vote">Vote Here</Link></MenuItem>*/}
+                <MenuItem><Link to="/user-contests">My Contests</Link></MenuItem>
+                <MenuItem><Link to="/admin-contests">Admin - All Contests</Link></MenuItem>
             </List>
         </Box>
     );

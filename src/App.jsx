@@ -6,6 +6,8 @@ import ContestantPage from "./pages/ContestantPage/ContestantPage.jsx";
 import SignInPage from "./pages/SignInPage/SignInPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import VotingPage from "./pages/VotingPage/VotingPage.jsx";
+import AdminContestsPage from "./pages/AdminContestsPage/AdminContestsPage.jsx";
+import UserContestsPage from "./pages/UserContestsPage/UserContestsPage.jsx";
 import BasicAppBar from "./BasicAppBar.jsx";
 import './App.css'
 
@@ -23,6 +25,8 @@ export default function App() {
             <Route path="/" element={<HomePage />}/>
             <Route path="/contestants" element={<ContestantPage />}/>
             <Route path="/vote" element={<VotingPage />}/>
+            <Route path="/admin-contests" element={<AdminContestsPage />}/>
+            <Route path="/user-contests" element={<UserContestsPage />}/>
             <Route path="*" element={<NotFoundPage />}/>
 
         </Routes>

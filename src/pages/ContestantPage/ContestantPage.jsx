@@ -9,7 +9,6 @@ const columns = [
     {field: 'confection'}
 ];
 
-
 export default function ContestantPage() {
     const [rows, setRows] = useState([]);
 
