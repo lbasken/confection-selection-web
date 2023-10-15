@@ -5,12 +5,6 @@ import "./VotingPage.css";
 
 export default function VotingPage() {
 
-    // set initial form data values to 0
-    // const [vote, setVote] = useState({
-    //     best_tasting: 0,
-    //     most_festive: 0,
-    // });
-
     const onSubmit = (formState, formEvent) => {
         console.log("Form Submitted");
         console.log(formState, formEvent);
