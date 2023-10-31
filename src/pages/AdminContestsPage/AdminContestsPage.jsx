@@ -7,10 +7,10 @@ import {Link} from "react-router-dom";
 import ServiceClient from "../../ServiceClient.js";
 
 const columns = [
-    {field: 'name'},
+  {field: 'name'},
   {field: 'description'},
   {field: 'start_date'},
-    {field: 'end_date'}
+  {field: 'end_date'}
 ];
 
 export default function AdminContestsPage() {

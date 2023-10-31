@@ -24,8 +24,6 @@ export default function App() {
         <BasicAppBar />
         <Routes>
             <Route path="/" element={<HomePage />}/>
-            <Route path="/contestants" element={<ContestantPage />}/>
-            <Route path="/vote" element={<VotingPage />}/>
             <Route path="/admin-contests" element={<AdminContestsPage />}/>
             <Route path="/admin-create-contests" element={<AdminCreateContestPage />}/>
             <Route path="/user-contests" element={<UserContestsPage />}/>
