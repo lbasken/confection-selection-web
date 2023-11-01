@@ -1,0 +1,35 @@
+.admin-manage-contest-page {
+
+  position: absolute;
+  inset: 64px 0 0 0;
+  padding: 1em;
+  background-color: #80A080;
+  display: flex;
+  flex-direction: column;
+
+  .admin-manage-contest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em 0;
+
+    .admin-manage-contest-date-range {
+      background-color: #C0D0C0;
+      color: black;
+      width: 12em;
+      padding: 0.25em 0.5em;
+      text-align: center;
+      outline: none;
+      border: 0;
+    }
+
+  }
+
+  .admin-manage-contest-submit-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1em;
+  }
+
+}

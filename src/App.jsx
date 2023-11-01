@@ -29,7 +29,7 @@ export default function App() {
         <Route path="/contestants" element={<ContestantPage />} />
         <Route path="/vote" element={<VotingPage />} />
         {user?.role === "admin" && <Route path="/admin-contests" element={<AdminContestsPage />} />}
-        {user?.role === "admin" && <Route path="/admin-manage-contest/:id" element={<AdminCreateContestPage />} />}
+        {user?.role === "admin" && <Route path="/admin-manage-contest/:id?" element={<AdminCreateContestPage />} />}
         <Route path="/user-contests" element={<UserContestsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

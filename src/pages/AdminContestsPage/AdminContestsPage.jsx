@@ -24,7 +24,6 @@ export default function AdminContestsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     if (!token) { return; }
     refresh();
   }, [token]);
