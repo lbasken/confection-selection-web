@@ -7,9 +7,13 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import {MenuItem} from "@mui/material";
+import useAuth from "./hooks/useAuth.js";
 import "./MenuDrawer.css";
 
 export default function MenuDrawer() {
+
+  const {user} = useAuth();
+
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -21,7 +25,6 @@ export default function MenuDrawer() {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-
         setState({ ...state, [anchor]: open });
     };
 
@@ -37,10 +40,8 @@ export default function MenuDrawer() {
             </List>
             <Divider />
             <List>
-                {/*<MenuItem><Link to="/contestants">Contestant List</Link></MenuItem>*/}
-                {/*<MenuItem><Link to="/vote">Vote Here</Link></MenuItem>*/}
-                <MenuItem><Link to="/user-contests">My Contests</Link></MenuItem>
-                <MenuItem><Link to="/admin-contests">Admin - All Contests</Link></MenuItem>
+              <MenuItem><Link to="/user-contests">My Contests</Link></MenuItem>
+              {user?.role === "admin" && <MenuItem><Link to="/admin-contests">Admin - All Contests</Link></MenuItem>}
             </List>
         </Box>
     );

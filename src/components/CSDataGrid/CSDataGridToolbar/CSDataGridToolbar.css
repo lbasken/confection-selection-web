@@ -1,0 +1,24 @@
+.cs-data-grid-toolbar {
+
+  .cs-data-grid-toolbar-spacer {
+    flex-grow: 1;
+  }
+
+  .cs-data-grid-toolbar-button {
+
+    color: #404040;
+    outline: none;
+    padding: 0 0.5em;
+    min-width: auto;
+
+    :hover {
+      color: black;
+    }
+
+    & svg {
+      font-size: 1em;
+    }
+
+  }
+
+}

@@ -23,16 +23,4 @@ export default class Firebase {
     Firebase.ui = new firebaseui.auth.AuthUI(Firebase.auth)
   }
 
-  static async getUser() {
-    if (Firebase.auth.currentUser) {
-      const tokenResult = await Firebase.auth.currentUser.getIdTokenResult();
-      return {...Firebase.auth.currentUser, ...{claims: tokenResult.claims}};
-    }
-  }
-
-  static async isAdmin() {
-    const user = await Firebase.getUser();
-    return user?.role === "admin";
-  }
-
 }

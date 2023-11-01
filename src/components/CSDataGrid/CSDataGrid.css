@@ -1,0 +1,16 @@
+.cs-data-grid {
+
+  width: 100%;
+  height: 100%;
+
+  .MuiDataGrid-root {
+    .MuiDataGrid-cell:focus,
+    .MuiDataGrid-cell:focus-within,
+    .MuiDataGrid-columnHeader:focus,
+    .MuiDataGrid-columnHeader:focus-within {
+      outline: none;
+      user-select: none;
+    }
+  }
+
+}
