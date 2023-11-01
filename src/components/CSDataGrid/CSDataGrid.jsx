@@ -17,7 +17,8 @@ export default function CSDataGrid(props) {
         field: "actions",
         type: "actions",
         headerName: "",
-        width: 50,
+        flex: 1,
+        align: "right",
         getActions: ({id}) => {
           return [<GridActionsCellItem icon={<Delete />} label="Delete" onClick={() => onDelete(id)} color="inherit" />];
         }
