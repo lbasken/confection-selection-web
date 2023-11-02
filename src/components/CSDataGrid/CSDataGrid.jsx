@@ -19,7 +19,8 @@ export default function CSDataGrid(props) {
 
   useEffect(() => {
     if (!props.columns) { return; }
-    const columns = JSON.parse(JSON.stringify(props.columns));
+    const columns = [];
+    for (const column of props.columns) { columns.push(column); }
     if (props.crud) {
       columns.push({
         field: "actions",
@@ -40,6 +41,8 @@ export default function CSDataGrid(props) {
   }
 
   async function processRowUpdate(updated, original) {
+    console.log("processRowUpdate", updated);
+    delete updated.isNew;
     if (props.onChange) { props.onChange(rows.map(row => row.id === updated.id ? updated : row)); }
     return updated;
   }
@@ -79,6 +82,8 @@ export default function CSDataGrid(props) {
     slots.toolbar = CSDataGridToolbar;
     slotProps.toolbar = {onClick: onAdd, add: props.add};
   }
+
+  console.log(columns);
 
   return <div className="cs-data-grid">
     <DataGrid

@@ -36,11 +36,12 @@ export default function UserContestsPage() {
   }
 
   function onRowClick(id) {
+    // TODO: navigate to the voting page for this contest
     // navigate(`/admin-manage-contest/${id}`);
   }
 
   return <div className="user-contests-page">
-    <h2>My Contests</h2>
+    <h2>Contests</h2>
     <CSDataGrid
       rows={rows}
       columns={columns}

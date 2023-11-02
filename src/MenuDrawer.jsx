@@ -40,8 +40,8 @@ export default function MenuDrawer() {
             </List>
             <Divider />
             <List>
-              <MenuItem><Link to="/user-contests">My Contests</Link></MenuItem>
-              {user?.role === "admin" && <MenuItem><Link to="/admin-contests">Admin - All Contests</Link></MenuItem>}
+              <MenuItem><Link to="/user-contests">Contests</Link></MenuItem>
+              {user?.role === "admin" && <MenuItem><Link to="/admin-contests">Manage Contests</Link></MenuItem>}
             </List>
         </Box>
     );

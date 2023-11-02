@@ -80,7 +80,7 @@ export default function AdminContestsPage() {
   }
 
   return <div className="admin-contests-page">
-    <h2>Contests</h2>
+    <h2>Manage Contests</h2>
     <CSDataGrid
       rows={rows}
       columns={columns}
