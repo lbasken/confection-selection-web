@@ -3,6 +3,7 @@
   width: 100%;
 
   .MuiDataGrid-root {
+    border-color: #808080;
     .MuiDataGrid-cell:focus,
     .MuiDataGrid-cell:focus-within,
     .MuiDataGrid-columnHeader:focus,

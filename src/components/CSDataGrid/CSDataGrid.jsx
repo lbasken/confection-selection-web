@@ -21,27 +21,17 @@ export default function CSDataGrid(props) {
     if (!props.columns) { return; }
     const columns = [];
     for (const column of props.columns) { columns.push(column); }
-    if (props.crud) {
-      columns.push({
-        field: "actions",
-        type: "actions",
-        headerName: "",
-        flex: 1,
-        align: "right",
-        getActions: ({id}) => {
-          return [<GridActionsCellItem icon={<Delete />} label="Delete" onClick={() => onDelete(id)} color="inherit" />];
-        }
-      });
+    if (props.getActions) {
+      columns.push({field: "actions", type: "actions", headerName: "", flex: 1, align: "right", getActions: props.getActions});
     }
     setColumns(columns);
-  }, [props.columns, props.crud]);
+  }, [props.columns]);
 
   function handleRowModesModelChange(newRowModesModel) {
     setRowModesModel(newRowModesModel);
   }
 
   async function processRowUpdate(updated, original) {
-    console.log("processRowUpdate", updated);
     delete updated.isNew;
     if (props.onChange) { props.onChange(rows.map(row => row.id === updated.id ? updated : row)); }
     return updated;
@@ -51,20 +41,12 @@ export default function CSDataGrid(props) {
     console.log("onProcessRowUpdateError", error);
   }
 
-  function onDelete(id) {
-    if (props.autoAddRow) {
-      if (props.onChange) { props.onChange(rows.filter(row => row.id !== id)); }
-    } else {
-      if (props.onDelete) { props.onDelete(id); }
-    }
-  }
-
   function onRowClick(params, event, details) {
     if (props.onRowClick) { props.onRowClick(params.row.id); }
   }
 
   function onAdd() {
-    if (props.autoAddRow) {
+    if (props.showAdd) {
       const id = randomId();
       setRows((oldRows) => [...oldRows, {id, isNew: true}]);
       setRowModesModel((oldModel) => ({
@@ -82,8 +64,6 @@ export default function CSDataGrid(props) {
     slots.toolbar = CSDataGridToolbar;
     slotProps.toolbar = {onClick: onAdd, add: props.add};
   }
-
-  console.log(columns);
 
   return <div className="cs-data-grid">
     <DataGrid

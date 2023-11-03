@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {GridActionsCellItem} from "@mui/x-data-grid";
+import {Delete, HowToVote, ToggleOff, ToggleOn, Visibility, VisibilityOff} from "@mui/icons-material";
 import {useModal} from "mui-modal-provider";
 import ServiceClient from "../../ServiceClient.js";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
@@ -9,9 +11,7 @@ import "./AdminContestsPage.css";
 
 const columns = [
   {field: "name", width: 200},
-  {field: "description", width: 300},
-  {field: "start_date", width: 150},
-  {field: "end_date",  width: 150}
+  {field: "description", width: 300}
 ];
 
 export default function AdminContestsPage() {
@@ -19,14 +19,16 @@ export default function AdminContestsPage() {
   const {user, token} = useAuth();
   const {showModal, hideModal} = useModal();
   const navigate = useNavigate();
+  const rowsRef = useRef();
 
   const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState();
+
+  rowsRef.current = rows;
 
   useEffect(() => {
-    if (!token) { return; }
     refresh();
-  }, [token]);
+  }, []);
 
   async function refresh() {
     try {
@@ -41,21 +43,18 @@ export default function AdminContestsPage() {
   }
 
   async function deleteContest(id) {
-    console.log("deleteContest", id);
     try {
       setLoading(true);
-      const contest = await ServiceClient.request(`/contest/${id}`, "DELETE");
+      await ServiceClient.request(`/contest/${id}`, "DELETE");
       refresh();
     } catch (error) {
-      console.log(error.message);
-    } finally {
       setLoading(false);
+      console.log(error.message);
     }
   }
 
   function onDelete(id) {
     const contest = rows.find(row => row.id === id);
-    console.log(contest);
     const dialog = showModal(
       ConfirmationDialog,
       {
@@ -71,12 +70,50 @@ export default function AdminContestsPage() {
     );
   }
 
+  async function onEnable(id) {
+    const contest = rowsRef.current.find(row => row.id === id);
+    if (!contest) { return; }
+    contest.enabled = !contest.enabled;
+    try {
+      setLoading(true);
+      await ServiceClient.request(`/contest/${id}`, "PATCH", contest);
+      refresh();
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function onVisible(id) {
+    const contest = rowsRef.current.find(row => row.id === id);
+    if (!contest) { return; }
+    contest.visible = !contest.visible;
+    try {
+      setLoading(true);
+      await ServiceClient.request(`/contest/${id}`, "PATCH", contest);
+      refresh();
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   function onAdd() {
     navigate("/admin-manage-contest");
   }
 
   function onRowClick(id) {
     navigate(`/admin-manage-contest/${id}`);
+  }
+
+  function getActions(params) {
+    return [
+      <GridActionsCellItem icon={params.row.visible ? <Visibility /> : <VisibilityOff />} label="Visible" onClick={() => onVisible(params.id)} color="inherit" />,
+      <GridActionsCellItem icon={params.row.enabled ? <HowToVote /> : <HowToVote style={{color: "#707070"}} />} label="Enable" onClick={() => onEnable(params.id)} color="inherit" />,
+      <GridActionsCellItem icon={<Delete />} label="Delete" onClick={() => onDelete(params.id)} color="inherit" />
+    ];
   }
 
   return <div className="admin-contests-page">
@@ -90,6 +127,7 @@ export default function AdminContestsPage() {
       onRowClick={onRowClick}
       onDelete={onDelete}
       loading={loading}
+      getActions={getActions}
     />
   </div>;
 

@@ -13,7 +13,6 @@ export default function AutocompleteEditCell(props) {
 
   function onChange(event, value) {
     const {id, field} = props;
-    console.log("onChange", id, field, value);
     apiRef.current.setEditCellValue({id, field, value});
   }
 

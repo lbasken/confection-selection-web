@@ -26,7 +26,7 @@ export default function UserContestsPage() {
   async function refresh() {
     try {
       setLoading(true);
-      const data = await ServiceClient.request("/contest");
+      const data = await ServiceClient.request("/contest_live");
       setRows(data);
     } catch (error) {
       console.log(error.message);
