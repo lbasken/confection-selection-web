@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {DataGrid, GridActionsCellItem, GridRowModes} from "@mui/x-data-grid";
-import {Delete} from "@mui/icons-material";
+import {DataGrid, GridRowModes} from "@mui/x-data-grid";
 import {LinearProgress} from "@mui/material";
 import CSDataGridToolbar from "./CSDataGridToolbar/CSDataGridToolbar.jsx";
 import {randomId} from "@mui/x-data-grid-generator";
@@ -65,7 +64,12 @@ export default function CSDataGrid(props) {
     slotProps.toolbar = {onClick: onAdd, add: props.add};
   }
 
-  return <div className="cs-data-grid">
+  const classes = ["cs-data-grid"];
+  if (props.autoHeight) {
+    classes.push("cs-data-grid-auto-height")
+  }
+
+  return <div className={`${classes.join(" ")}`}>
     <DataGrid
       columns={columns ?? []}
       rows={rows ?? []}
@@ -74,7 +78,6 @@ export default function CSDataGrid(props) {
       loading={props.loading}
       onRowClick={onRowClick}
       slots={slots}
-      autoHeight
       slotProps={slotProps}
       rowModesModel={rowModesModel}
       onRowModesModelChange={handleRowModesModelChange}

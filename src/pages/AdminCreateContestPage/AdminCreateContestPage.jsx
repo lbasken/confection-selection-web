@@ -1,13 +1,15 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Field, Form, Formik} from "formik";
-import {Autocomplete, Button, FormControl, FormGroup, FormLabel, InputLabel, TextField} from "@mui/material";
+import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import ServiceClient from "../../ServiceClient.js";
-import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
-import AutocompleteEditCell from "../../components/CSDataGrid/AutocompleteEditCell/AutocompleteEditCell.jsx";
-import "./AdminCreateContestPage.css";
+import {Autocomplete, Button, TextField} from "@mui/material";
 import {GridActionsCellItem} from "@mui/x-data-grid";
 import {Delete} from "@mui/icons-material";
+import {useStore} from "@d4lton/node-frontend";
+import {Field, Form, Formik} from "formik";
+import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
+import AutocompleteEditCell from "../../components/CSDataGrid/AutocompleteEditCell/AutocompleteEditCell.jsx";
+import AdminContestsStore from "../../AdminContestsStore.js";
+import UsersStore from "../../UsersStore.js";
+import "./AdminCreateContestPage.css";
 
 export default function AdminCreateContestPage() {
 
@@ -23,45 +25,23 @@ export default function AdminCreateContestPage() {
     }
   ];
 
-  const abortController = useRef(new AbortController());
-
   const params = useParams();
   const navigate = useNavigate();
 
+  const [contests, contestsStore] = useStore(AdminContestsStore);
+  const [users, usersStore] = useStore(UsersStore);
+
   const [contest, setContest] = useState();
-  const [users, setUsers] = useState([]);
   const [judges, setJudges] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (params.id) { loadContest(params.id); }
-    loadUsers();
   }, [params?.id]);
 
-  async function loadUsers() {
-    try {
-      const judges = await ServiceClient.request("/user");
-      setUsers(judges);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
   async function loadContest(id) {
-    try {
-      abortController.current?.abort();
-      abortController.current = new AbortController();
-      setLoading(true);
-      const contest = await ServiceClient.request(`/contest/${id}`, "GET", undefined, abortController.current);
-      setContest(contest);
-      setJudges(contest.judges ?? []);
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        console.log(error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
+    const contest = contests.find(contest => contest.id === id);
+    setContest(contest);
+    setJudges(contest?.judges ?? []);
   }
 
   function renderEmailInputCell(params) {
@@ -89,9 +69,9 @@ export default function AdminCreateContestPage() {
     values.judges = judges ?? [];
     try {
       if (params.id) {
-        await ServiceClient.request(`/contest/${params.id}`, "PATCH", values);
+        await contestsStore.update(values);
       } else {
-        await ServiceClient.request("/contest", "POST", values);
+        await contestsStore.create(values);
       }
       navigate("/admin-contests");
     } catch (error) {
@@ -117,7 +97,7 @@ export default function AdminCreateContestPage() {
             <Autocomplete
               multiple
               id="tags-standard"
-              options={users.map(user => user.uid) ?? []}
+              options={users?.map(user => user.uid) ?? []}
               getOptionLabel={option => users?.find(user => user.uid === option)?.email ?? option}
               value={judges}
               renderInput={(params) => <TextField {...params} variant="outlined" required label="Judges" placeholder="Judges" />}
@@ -125,12 +105,13 @@ export default function AdminCreateContestPage() {
             />
           </div>
           <div className="admin-manage-contest-page-entries">
-            <div style={{margin: "1em"}}>
+            <div style={{margin: "1em", flexGrow: "1", display: "flex", flexDirection: "column"}}>
               <CSDataGrid
                 columns={columns}
                 rows={contest?.entries ?? []}
                 crud
                 showAdd
+                autoHeight
                 add="ADD ENTRY"
                 onChange={onChange}
                 getActions={getActions}
@@ -138,6 +119,7 @@ export default function AdminCreateContestPage() {
             </div>
           </div>
           <div className="admin-manage-contest-submit-button">
+            <Button variant="text" onClick={() => navigate("/admin-contests")}>CANCEL</Button>
             <Button variant="contained" onClick={() => props.submitForm()}>SAVE</Button>
           </div>
         </>

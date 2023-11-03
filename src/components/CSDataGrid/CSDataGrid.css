@@ -13,4 +13,8 @@
     }
   }
 
+  &.cs-data-grid-auto-height {
+    flex-grow: 1;
+  }
+
 }

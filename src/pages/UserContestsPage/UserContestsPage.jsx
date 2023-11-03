@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
+import {useStore} from "@d4lton/node-frontend";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
-import ServiceClient from "../../ServiceClient.js";
-import useAuth from "../../hooks/useAuth.js";
+import UserContestsStore from "../../UserContestsStore.js";
 import "./UserContestsPage.css";
 
 export default function UserContestsPage() {
@@ -13,27 +13,7 @@ export default function UserContestsPage() {
     {field: "end_date",  width: 150}
   ];
 
-  const {user, token} = useAuth();
-
-  const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!token) { return; }
-    refresh();
-  }, [token]);
-
-  async function refresh() {
-    try {
-      setLoading(true);
-      const data = await ServiceClient.request("/contest_live");
-      setRows(data);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [contests, contestsStore] = useStore(UserContestsStore);
 
   function onRowClick(id) {
     // TODO: navigate to the voting page for this contest
@@ -43,10 +23,10 @@ export default function UserContestsPage() {
   return <div className="user-contests-page">
     <h2>Contests</h2>
     <CSDataGrid
-      rows={rows}
+      rows={contests}
       columns={columns}
       onRowClick={onRowClick}
-      loading={loading}
+      loading={contestsStore.loading}
     />
   </div>
 
