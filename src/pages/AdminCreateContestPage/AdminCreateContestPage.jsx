@@ -35,8 +35,9 @@ export default function AdminCreateContestPage() {
   const [judges, setJudges] = useState([]);
 
   useEffect(() => {
+    if (!contests) { return; }
     if (params.id) { loadContest(params.id); }
-  }, [params?.id]);
+  }, [params?.id, contests]);
 
   async function loadContest(id) {
     const contest = contests.find(contest => contest.id === id);
