@@ -4,6 +4,7 @@ import ServiceClient from "../ServiceClient.js";
 export default class AdminContestsStore extends Store {
 
   init() {
+    this.value = [];
     this.loading = true;
     this.refresh();
   }
@@ -26,6 +27,10 @@ export default class AdminContestsStore extends Store {
       await ServiceClient.request(`/contest/${contest.id}`, "PATCH", contest);
       setTimeout(() => this.refresh());
     });
+  }
+
+  getById(id) {
+    return this.value.find(it => it.id === id);
   }
 
   async deleteById(id) {

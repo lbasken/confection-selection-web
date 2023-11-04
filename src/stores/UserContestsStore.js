@@ -4,6 +4,7 @@ import ServiceClient from "../ServiceClient.js";
 export default class UserContestsStore extends Store {
 
   init() {
+    this.value = [];
     this.loading = true;
     this.refresh();
     EventBus.register("contest", (event) => {
@@ -19,7 +20,11 @@ export default class UserContestsStore extends Store {
     });
   }
 
-  async vote(contest, category) {
+  getById(id) {
+    return this.value.find(it => it.id === id);
+  }
+
+  async vote(contest, votes) {
     // TODO
   }
 
