@@ -7,8 +7,8 @@ import {useStore} from "@d4lton/node-frontend";
 import {Field, Form, Formik} from "formik";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
 import AutocompleteEditCell from "../../components/CSDataGrid/AutocompleteEditCell/AutocompleteEditCell.jsx";
-import AdminContestsStore from "../../AdminContestsStore.js";
-import UsersStore from "../../UsersStore.js";
+import AdminContestsStore from "../../stores/AdminContestsStore.js";
+import UsersStore from "../../stores/UsersStore.js";
 import "./AdminCreateContestPage.css";
 
 export default function AdminCreateContestPage() {

@@ -21,7 +21,8 @@ export default function CSDataGrid(props) {
     const columns = [];
     for (const column of props.columns) { columns.push(column); }
     if (props.getActions) {
-      columns.push({field: "actions", type: "actions", headerName: "", flex: 1, align: "right", getActions: props.getActions});
+      const minWidth = props.actionsMinWidth ?? 40;
+      columns.push({field: "actions", type: "actions", headerName: "", minWidth: minWidth, flex: 1, align: "right", getActions: props.getActions});
     }
     setColumns(columns);
   }, [props.columns]);

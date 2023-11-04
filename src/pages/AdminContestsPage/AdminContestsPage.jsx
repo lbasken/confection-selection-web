@@ -6,7 +6,7 @@ import {useModal} from "mui-modal-provider";
 import {useStore} from "@d4lton/node-frontend";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
 import ConfirmationDialog from "../../components/dialogs/ConfirmationDialog/ConfirmationDialog.jsx";
-import AdminContestsStore from "../../AdminContestsStore.js";
+import AdminContestsStore from "../../stores/AdminContestsStore.js";
 import "./AdminContestsPage.css";
 
 const columns = [
@@ -78,7 +78,7 @@ export default function AdminContestsPage() {
   }
 
   return <div className="admin-contests-page">
-    <h2>Manage Contests</h2>
+    <div className="admin-contests-page-title">Manage Contests</div>
     <CSDataGrid
       autoHeight
       rows={rows}
@@ -89,6 +89,7 @@ export default function AdminContestsPage() {
       onRowClick={onRowClick}
       onDelete={onDelete}
       loading={contestsStore.loading}
+      actionsMinWidth={120}
       getActions={getActions}
     />
   </div>;

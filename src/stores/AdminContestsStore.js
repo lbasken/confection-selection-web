@@ -1,5 +1,5 @@
 import {Store} from "@d4lton/node-frontend";
-import ServiceClient from "./ServiceClient.js";
+import ServiceClient from "../ServiceClient.js";
 
 export default class AdminContestsStore extends Store {
 

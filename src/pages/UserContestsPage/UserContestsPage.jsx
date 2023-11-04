@@ -1,16 +1,14 @@
 import React from "react";
 import {useStore} from "@d4lton/node-frontend";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
-import UserContestsStore from "../../UserContestsStore.js";
+import UserContestsStore from "../../stores/UserContestsStore.js";
 import "./UserContestsPage.css";
 
 export default function UserContestsPage() {
 
   const columns = [
     {field: "name", width: 200},
-    {field: "description", width: 300},
-    {field: "start_date", width: 150},
-    {field: "end_date",  width: 150}
+    {field: "description", width: 300}
   ];
 
   const [contests, contestsStore] = useStore(UserContestsStore);
@@ -21,7 +19,7 @@ export default function UserContestsPage() {
   }
 
   return <div className="user-contests-page">
-    <h2>Contests</h2>
+    <div className="user-contests-page-title">Contests</div>
     <CSDataGrid
       rows={contests}
       columns={columns}
