@@ -4,6 +4,7 @@ import ServiceClient from "../ServiceClient.js";
 export default class UserContestsStore extends Store {
 
   init() {
+    this.value = [];
     this.loading = true;
     this.refresh();
     EventBus.register("contest", (event) => {
