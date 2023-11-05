@@ -1,5 +1,10 @@
 import React from "react";
+import "./NotFoundPage.css";
 
 export default function NotFoundPage() {
-    return <h1>Page Not Found</h1>
+
+    return <div className="not-found-page">
+      <div className="not-found-page-title">Page Not Found</div>
+    </div>;
+
 }

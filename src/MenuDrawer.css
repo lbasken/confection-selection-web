@@ -1,3 +1,9 @@
-div .menu-icon {
-    color: black;
+.menu-drawer {
+
+  .menu-icon {
+    color: white;
+    padding: 0;
+    min-width: auto;
+  }
+
 }

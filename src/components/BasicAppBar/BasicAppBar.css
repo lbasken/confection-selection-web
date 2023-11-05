@@ -1,0 +1,9 @@
+.basic-app-bar {
+
+  flex-grow: 1;
+
+  & .MuiAppBar-root {
+    background-color: #800000;
+  }
+
+}

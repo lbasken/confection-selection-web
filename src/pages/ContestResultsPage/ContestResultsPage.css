@@ -1,4 +1,4 @@
-.home-page {
+.contest-results-page {
 
   position: absolute;
   inset: 56px 0 0 0;
@@ -18,7 +18,7 @@
     inset: 64px 0 0 0;
   }
 
-  .home-page-title {
+  .contest-results-page-title {
     font-size: 1.5rem;
   }
 

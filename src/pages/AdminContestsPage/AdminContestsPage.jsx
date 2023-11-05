@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {GridActionsCellItem} from "@mui/x-data-grid";
-import {Delete, HowToVote, Visibility, VisibilityOff} from "@mui/icons-material";
+import {Ballot, Delete, HowToVote, Visibility, VisibilityOff} from "@mui/icons-material";
 import {useModal} from "mui-modal-provider";
 import {useStore} from "@d4lton/node-frontend";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
@@ -61,6 +61,10 @@ export default function AdminContestsPage() {
     contestsStore.update(contest);
   }
 
+  function onResults(id) {
+    navigate(`/contest-results/${id}`);
+  }
+
   function onAdd() {
     navigate("/admin-manage-contest");
   }
@@ -71,6 +75,7 @@ export default function AdminContestsPage() {
 
   function getActions(params) {
     return [
+      <GridActionsCellItem icon={<Ballot />} label="Results" onClick={() => onResults(params.id)} color="inherit" />,
       <GridActionsCellItem icon={params.row.visible ? <Visibility /> : <VisibilityOff style={{color: "#707070"}} />} label="Visible" onClick={() => onVisible(params.id)} color="inherit" />,
       <GridActionsCellItem icon={params.row.enabled ? <HowToVote /> : <HowToVote style={{color: "#707070"}} />} label="Enable" onClick={() => onEnable(params.id)} color="inherit" />,
       <GridActionsCellItem icon={<Delete />} label="Delete" onClick={() => onDelete(params.id)} color="inherit" />
@@ -89,7 +94,7 @@ export default function AdminContestsPage() {
       onRowClick={onRowClick}
       onDelete={onDelete}
       loading={contestsStore.loading}
-      actionsMinWidth={120}
+      actionsMinWidth={160}
       getActions={getActions}
     />
   </div>;

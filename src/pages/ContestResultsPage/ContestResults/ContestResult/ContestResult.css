@@ -1,0 +1,23 @@
+.contest-result {
+
+  padding: 1em;
+  border: 1px solid grey;
+  border-radius: 4px;
+
+  .contest-result-detail {
+
+    display: inline-block;
+    color: #404040;
+
+    .contest-result-detail-category {
+      font-weight: 500;
+    }
+
+    .contest-result-detail-winner {
+      font-weight: 500;
+      color: #202020;
+    }
+
+  }
+
+}
