@@ -16,6 +16,8 @@ import './App.css'
 
 export default function App() {
 
+  console.log("App");
+
   const {user} = useAuth();
 
   if (user === undefined) { return; } // user being undefined means Firebase is still loading
