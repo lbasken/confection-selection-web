@@ -8,19 +8,19 @@ export default function ContestResult(props) {
 
   function renderTie() {
     return <div className="contest-result-detail">
-      For <span className="contest-result-detail-category">"{Utilities.generateNameForCategoryId(props.category_id)}"</span>, there is a <span>{winner.entrants.length}-way tie</span> between <span className="contest-result-detail-winner">{Utilities.concatenateWithAnd(winner.entrants)}</span>.
+      For <span className="contest-result-detail-category">"{Utilities.generateNameForCategoryId(props.category_id)},"</span> there is a <span>{winner.entrants.length}-way tie</span> between <span className="contest-result-detail-winner">{Utilities.concatenateWithAnd(winner.entrants)}</span>.
     </div>
   }
 
   function renderWinner() {
     return <div className="contest-result-detail">
-      For <span className="contest-result-detail-category">"{Utilities.generateNameForCategoryId(props.category_id)}"</span>, the winner is <span className="contest-result-detail-winner">{winner.entrants[0]}</span>.
+      For <span className="contest-result-detail-category">"{Utilities.generateNameForCategoryId(props.category_id)},"</span> the winner is <span className="contest-result-detail-winner">{winner.entrants[0]}</span>.
     </div>
   }
 
   function renderNoVotes() {
     return <div className="contest-result-detail">
-      For <span className="contest-result-detail-category">"{Utilities.generateNameForCategoryId(props.category_id)}"</span>, there are no votes.
+      For <span className="contest-result-detail-category">"{Utilities.generateNameForCategoryId(props.category_id)},"</span> there are no votes.
     </div>
   }
 
