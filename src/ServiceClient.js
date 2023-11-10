@@ -1,5 +1,12 @@
 import Firebase from "./Firebase";
 
+export class HttpError extends Error {
+  constructor(message, code) {
+    super(message);
+    this.code = code;
+  }
+}
+
 export default class ServiceClient {
 
   static async request(endpoint, method = "GET", body, abortController) {
@@ -14,7 +21,10 @@ export default class ServiceClient {
       signal: abortController?.signal
     };
     return await fetch(`${window.process.env.API_URL}${endpoint}`, options)
-      .then(response => response.json())
+      .then(response => {
+        if (response.status !== 200) { throw new HttpError(response.statusText, response.status); }
+        return response.json();
+      });
   }
 
 }

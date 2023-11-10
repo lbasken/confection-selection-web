@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import {MenuItem} from "@mui/material";
-import useAuth from "./hooks/useAuth.js";
+import useAuth from "../../../hooks/useAuth.js";
 import "./MenuDrawer.css";
 
 export default function MenuDrawer() {
@@ -43,6 +43,7 @@ export default function MenuDrawer() {
         <MenuItem><Link to="/user-contests">Contests</Link></MenuItem>
         <MenuItem><Link to="/contests">Contest Cards (Under Construction)</Link></MenuItem>
         {user?.role === "admin" && <MenuItem><Link to="/admin-contests">Manage Contests</Link></MenuItem>}
+        {user?.role === "admin" && <MenuItem><Link to="/invite-user">Invite User</Link></MenuItem>}
       </List>
     </Box>
   );

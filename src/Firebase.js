@@ -23,8 +23,9 @@ export default class Firebase {
   static init() {
     Firebase.app = initializeApp(Firebase.firebaseConfig);
     Firebase.auth = getAuth(Firebase.app);
-    Firebase.ui = new firebaseui.auth.AuthUI(Firebase.auth)
+    Firebase.ui = new firebaseui.auth.AuthUI(Firebase.auth);
     Firebase.subscribe();
+    setInterval(() => { Firebase.user?.getIdToken(); }, 30000);
   }
 
   static subscribe() {
@@ -48,9 +49,11 @@ export default class Firebase {
       Firebase.eventSource.removeEventListener("error", Firebase.onError);
       Firebase.eventSource.close();
     }
-    Firebase.eventSource = new EventSource(`${window.process.env.API_URL}/events?token=${Firebase.token}`);
-    Firebase.eventSource.addEventListener("message", Firebase.onMessage);
-    Firebase.eventSource.addEventListener("error", Firebase.onError);
+    if (Firebase.user && Firebase.token) {
+      Firebase.eventSource = new EventSource(`${window.process.env.API_URL}/events?token=${Firebase.token}`);
+      Firebase.eventSource.addEventListener("message", Firebase.onMessage);
+      Firebase.eventSource.addEventListener("error", Firebase.onError);
+    }
   }
 
   static onMessage(event) {

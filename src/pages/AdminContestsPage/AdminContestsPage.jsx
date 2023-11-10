@@ -5,7 +5,7 @@ import {Ballot, Delete, HowToVote, Visibility, VisibilityOff} from "@mui/icons-m
 import {useModal} from "mui-modal-provider";
 import {useStore} from "@d4lton/node-frontend";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
-import ConfirmationDialog from "../../components/dialogs/ConfirmationDialog/ConfirmationDialog.jsx";
+import ConfirmationDialog from "../../components/dialogs/ConfirmationDialog.jsx";
 import AdminContestsStore from "../../stores/AdminContestsStore.js";
 import "./AdminContestsPage.css";
 
@@ -16,7 +16,7 @@ const columns = [
 
 export default function AdminContestsPage() {
 
-  const {showModal, hideModal} = useModal();
+  const {showModal} = useModal();
   const navigate = useNavigate();
   const rowsRef = useRef();
 

@@ -1,0 +1,21 @@
+.sign-up-page {
+
+  position: absolute;
+  inset: 56px 0 0 0;
+  padding: 1em;
+  background-color: #80A080;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  @media (min-width: 0px) {
+    @media (orientation: landscape) {
+      inset: 48px 0 0 0;
+    }
+  }
+
+  @media (min-width: 600px) {
+    inset: 64px 0 0 0;
+  }
+
+}

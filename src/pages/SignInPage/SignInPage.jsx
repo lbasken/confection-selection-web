@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from "react";
-import Firebase from "../../Firebase.js";
 import {GoogleAuthProvider, EmailAuthProvider} from "firebase/auth";
-import "./SignInPage.css";
-import "firebaseui/dist/firebaseui.css";
+import Firebase from "../../Firebase.js";
 import ServiceClient from "../../ServiceClient.js";
+import "firebaseui/dist/firebaseui.css";
+import "./SignInPage.css";
 
 export default function SignInPage() {
+
   const [container, setContainer] = useState();
 
   useEffect(() => {
-    if (!container) {
-      return;
-    }
+    if (!container) { return; }
     Firebase.ui.start(container, {
       signInOptions: [
         {provider: GoogleAuthProvider.PROVIDER_ID, customParameters: {prompt: "select_account"}},

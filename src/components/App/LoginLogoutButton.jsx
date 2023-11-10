@@ -1,8 +1,8 @@
 import React from "react";
 import {Button} from "@mui/material";
 import {GoogleAuthProvider, signInWithPopup, signOut} from "firebase/auth";
-import Firebase from "./Firebase.js";
-import useAuth from "./hooks/useAuth.js";
+import Firebase from "../../Firebase.js";
+import useAuth from "../../hooks/useAuth.js";
 
 export default function LoginLogoutButton() {
 
