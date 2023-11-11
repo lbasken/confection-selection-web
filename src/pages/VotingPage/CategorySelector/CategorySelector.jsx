@@ -5,7 +5,7 @@ import UsersStore from "../../../stores/UsersStore.js";
 import UserContestsStore from "../../../stores/UserContestsStore.js";
 import "./CategorySelector.css";
 
-export default function CategorySelector(props) {
+export default function CategorySelector({contest, category}) {
 
   const [users] = useStore(UsersStore);
   const [contests, contestsStore] = useStore(UserContestsStore);
@@ -14,19 +14,22 @@ export default function CategorySelector(props) {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    if (!props.contest?.entries.length || !users.length) { return; }
-    setOptions(props.contest.entries.map(entry => ({id: entry.id, label: entry.entry})));
-    setValue(props.contest.votes[props.category.id].id);
-  }, [props.contest, props.contest, users]);
+    if (!contest?.entries.length || !category || !users.length) { return; }
+    setOptions(contest.entries.map(entry => ({id: entry.id, label: entry.entry})));
+    console.log(contest, category);
+    const votes = contest.votes?.[category.id];
+    if (!votes) { return; }
+    setValue(votes.id);
+  }, [contest, category, users]);
 
   useEffect(() => {
-    if (!props.contest || !props.category || !value) { return; }
-    if (props.contest.votes[props.category.id].id === value) { return; }
-    const entry = props.contest.entries.find(entry => entry.id === value);
+    if (!contest || !category || !value) { return; }
+    if (contest.votes?.[category.id]?.id === value) { return; }
+    const entry = contest.entries.find(entry => entry.id === value);
     if (!entry) { return; }
-    props.contest.votes[props.category.id] = entry;
-    contestsStore.vote(props.contest, props.contest.votes);
-  }, [props.contest, props.category, value]);
+    contest.votes[category.id] = entry;
+    contestsStore.vote(contest, contest.votes);
+  }, [contest, category, value]);
 
   function renderOptions() {
     return options.map(option => <MenuItem key={option.id} value={option.id}>{option.label}</MenuItem>);
@@ -34,8 +37,8 @@ export default function CategorySelector(props) {
 
   return <div className="category-selector">
     <FormControl fullWidth>
-      <InputLabel>{props.category?.label}</InputLabel>
-      <Select value={value} label={props.category?.label} onChange={event => setValue(event.target.value)}>{renderOptions()}</Select>
+      <InputLabel>{category?.label}</InputLabel>
+      <Select value={value} label={category?.label} onChange={event => setValue(event.target.value)}>{renderOptions()}</Select>
     </FormControl>
   </div>
 
