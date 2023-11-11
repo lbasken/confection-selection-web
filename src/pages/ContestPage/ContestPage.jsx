@@ -8,6 +8,6 @@ export default function ContestPage() {
   const [contests, contestsStore] = useStore(UserContestsStore);
 
   return <div>
-    {contests?.map(contest => <ContestCard key={`contest_${contest.id}`} contest={contest} />)}
+    {contests?.map(contest => <ContestCard key={`contest_${contest.id}`} contest={contest} clickable />)}
   </div>
 }

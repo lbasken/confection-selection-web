@@ -9,8 +9,8 @@ export default function ContestCard(props) {
 
   console.log("ContestCard", props);
 
-  return <CardActionArea component={Link} to={`/vote/${props.contest.id}`}>
-    <Card sx={{ minWidth: 275 }}>
+  function renderCard() {
+    return <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography variant="h5" component="div">
           {props.contest.name}
@@ -19,6 +19,15 @@ export default function ContestCard(props) {
           {props.contest.description}
         </Typography>
       </CardContent>
-    </Card>
-  </CardActionArea>;
+    </Card>;
+  }
+
+  if (props.clickable) {
+    return <CardActionArea component={Link} to={`/vote/${props.contest.id}`}>
+      {renderCard()}
+    </CardActionArea>;
+  }
+
+  return renderCard();
+
 }

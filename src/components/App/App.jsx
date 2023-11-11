@@ -8,7 +8,6 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.jsx";
 import VotingPage from "../../pages/VotingPage/VotingPage.jsx";
 import AdminContestsPage from "../../pages/AdminContestsPage/AdminContestsPage.jsx";
 import AdminCreateContestPage from "../../pages/AdminCreateContestPage/AdminCreateContestPage.jsx";
-import UserContestsPage from "../../pages/UserContestsPage/UserContestsPage.jsx";
 import ContestPage from "../../pages/ContestPage/ContestPage.jsx";
 import BasicAppBar from "./BasicAppBar/BasicAppBar.jsx";
 import './App.css'
@@ -37,7 +36,6 @@ export default function App() {
       {user?.role === "admin" && <Route path="/admin-manage-contest/:id?" element={<AdminCreateContestPage />} />}
       {user?.role === "admin" && <Route path="/contest-results/:id?" element={<ContestResultsPage />} />}
       {user?.role === "admin" && <Route path="/invite-user" element={<InviteUserPage />} />}
-      <Route path="/user-contests" element={<UserContestsPage />} />
       <Route path="/contests" element={<ContestPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="*" element={<NotFoundPage />} />

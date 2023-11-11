@@ -39,8 +39,10 @@ export default function VotingPage() {
   }
 
   return <div className="voting-page">
-    <ContestCard contest={contest} />
-    {renderCategories()}
+      <ContestCard className="contest-card" contest={contest} />
+      <div>
+          {renderCategories()}
+      </div>
   </div>
 
 }
