@@ -8,6 +8,7 @@ import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
 import ConfirmationDialog from "../../components/dialogs/ConfirmationDialog.jsx";
 import AdminContestsStore from "../../stores/AdminContestsStore.js";
 import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
+import "../Page.css";
 import "./AdminContestsPage.css";
 
 const columns = [
@@ -101,7 +102,7 @@ export default function AdminContestsPage() {
     ];
   }
 
-  return <div className="admin-contests-page">
+  return <div className="admin-contests-page page">
     <div className="admin-contests-page-title">Manage Contests</div>
     <CSDataGrid
       autoHeight

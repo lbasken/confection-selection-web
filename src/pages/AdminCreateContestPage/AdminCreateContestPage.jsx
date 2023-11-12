@@ -9,6 +9,7 @@ import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
 import AutocompleteEditCell from "../../components/CSDataGrid/AutocompleteEditCell/AutocompleteEditCell.jsx";
 import AdminContestsStore from "../../stores/AdminContestsStore.js";
 import UsersStore from "../../stores/UsersStore.js";
+import "../Page.css";
 import "./AdminCreateContestPage.css";
 
 export default function AdminCreateContestPage() {
@@ -85,7 +86,7 @@ export default function AdminCreateContestPage() {
     description: contest?.description ?? ""
   };
 
-  return <div className="admin-manage-contest-page">
+  return <div className="admin-manage-contest-page page">
     <div className="admin-manage-contest-page-title">Manage Contest</div>
     <Formik enableReinitialize initialValues={values} onSubmit={onSubmit}>
       {props => {

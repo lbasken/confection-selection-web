@@ -6,6 +6,7 @@ import {EmailAuthProvider, GoogleAuthProvider} from "firebase/auth";
 import Firebase from "../../Firebase.js";
 import ServiceClient from "../../ServiceClient.js";
 import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
+import "../Page.css";
 import "./SignUpPage.css";
 
 export default function SignUpPage() {
@@ -81,7 +82,7 @@ export default function SignUpPage() {
     );
   }
 
-  return <div className="sign-up-page">
+  return <div className="sign-up-page page">
     <div>Welcome!</div>
     <div>You have been invited to sign up with this email address: {payload?.email}</div>
     <div ref={ref => setContainer(ref)} />

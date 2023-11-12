@@ -7,6 +7,7 @@ import ServiceClient from "../../ServiceClient.js";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
 import ContestResults from "./ContestResults/ContestResults.jsx";
 import Utilities from "../../Utilities.js";
+import "../Page.css";
 import "./ContestResultsPage.css";
 
 export default function ContestResultsPage() {
@@ -45,7 +46,7 @@ export default function ContestResultsPage() {
     return value.count;
   }
 
-  return <div className="contest-results-page">
+  return <div className="contest-results-page page">
     <div className="contest-results-page-title">{contest ? `Results for ${contest.name}` : "Loading..."}</div>
     <ContestResults winners={winners} />
     <CSDataGrid

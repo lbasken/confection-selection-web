@@ -3,7 +3,7 @@
   flex-grow: 1;
 
   & .MuiAppBar-root {
-    background-color: #800000;
+    background-color: var(--APP-BAR-COLOR);
   }
 
 }

@@ -4,6 +4,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
+
+  --APP-BAR-COLOR: #800000;
+  --PAGE-BACKGROUND-COLOR: #80A080;
+
 }
 
 a {

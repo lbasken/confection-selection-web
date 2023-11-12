@@ -4,6 +4,7 @@ import {GoogleAuthProvider, EmailAuthProvider} from "firebase/auth";
 import Firebase from "../../Firebase.js";
 import ServiceClient from "../../ServiceClient.js";
 import "firebaseui/dist/firebaseui.css";
+import "../Page.css";
 import "./SignInPage.css";
 
 export default function SignInPage() {
@@ -40,7 +41,7 @@ export default function SignInPage() {
     return false;
   }
 
-  return <div className="sign-in-page">
+  return <div className="sign-in-page page">
     <h1>Home Of The Annual Basken Family Christmas Cookie Competition</h1>
     <div ref={ref => setContainer(ref)} />
   </div>

@@ -5,6 +5,7 @@ import {useModal} from "mui-modal-provider";
 import ServiceClient from "../../ServiceClient.js";
 import Utilities from "../../Utilities.js";
 import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
+import "../Page.css";
 import "./InviteUserPage.css";
 
 export default function InviteUserPage() {
@@ -63,7 +64,7 @@ export default function InviteUserPage() {
     email: ""
   };
 
-  return <div className="invite-user-page">
+  return <div className="invite-user-page page">
     <div className="invite-user-page-title">Invite User</div>
     <Formik enableReinitialize initialValues={values} validateOnMount validate={validate} onSubmit={onSubmit}>
       {props => {
