@@ -4,7 +4,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuDrawer from "../MenuDrawer/MenuDrawer.jsx";
 import LoginLogoutButton from "../LoginLogoutButton.jsx";
-import ScrollingNewsfeed from "../ScrollingNewsfeed.jsx";
 import "./BasicAppBar.css";
 
 export default function BasicAppBar() {
@@ -13,8 +12,8 @@ export default function BasicAppBar() {
     <AppBar>
       <Toolbar className="appbar">
         <MenuDrawer />
-        <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-          <ScrollingNewsfeed />
+        <Typography className="typography" variant="h6" component="div" sx={{flexGrow: 1}}>
+          Confection-Selection
         </Typography>
         <LoginLogoutButton />
       </Toolbar>

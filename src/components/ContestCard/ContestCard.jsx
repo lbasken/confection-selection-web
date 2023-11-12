@@ -1,3 +1,4 @@
+import "./ContestCard.css";
 import {CardActionArea} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -8,7 +9,7 @@ import {Link} from "react-router-dom";
 export default function ContestCard(props) {
 
   function renderCard() {
-    return <Card sx={{ minWidth: 275 }}>
+    return <Card className="contest-card" sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography variant="h5" component="div">
           {props.contest.name}
@@ -21,7 +22,7 @@ export default function ContestCard(props) {
   }
 
   if (props.clickable) {
-    return <CardActionArea component={Link} to={`/vote/${props.contest.id}`}>
+    return <CardActionArea className="clickable-contest-card" component={Link} to={`/vote/${props.contest.id}`}>
       {renderCard()}
     </CardActionArea>;
   }

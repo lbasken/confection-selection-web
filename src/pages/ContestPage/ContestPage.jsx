@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import "./ContestPage.css";
 import {useNavigate} from "react-router-dom";
 import {useModal} from "mui-modal-provider";
 import {useStore} from "@d4lton/node-frontend";
@@ -30,7 +31,7 @@ export default function ContestPage() {
     }
   }, [contestsStore.error]);
 
-  return <div>
+  return <div className="contest-card">
     {contests?.map(contest => <ContestCard key={`contest_${contest.id}`} contest={contest} clickable />)}
   </div>
 }

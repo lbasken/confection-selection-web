@@ -1,9 +1,19 @@
+@font-face {
+  font-family: "Barlow-Condensed-Regular";
+  src: url("assets/fonts/BarlowCondensed/BarlowCondensed-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Barlow-Condensed-Semibold";
+  src: url("assets/fonts/BarlowCondensed/BarlowCondensed-SemiBold.ttf");
+}
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 50px;
   min-width: 320px;
   min-height: 100vh;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-family: Barlow-Condensed-Regular, sans-serif;
 
   --APP-BAR-COLOR: #800000;
   --PAGE-BACKGROUND-COLOR: #80A080;

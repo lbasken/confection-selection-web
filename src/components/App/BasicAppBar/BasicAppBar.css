@@ -6,4 +6,10 @@
     background-color: var(--APP-BAR-COLOR);
   }
 
+  .appbar {
+    .typography {
+      padding-right: 950px;
+      font-family: Barlow-Condensed-Semibold, sans-serif;
+    }
+  }
 }
