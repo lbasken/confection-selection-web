@@ -25,7 +25,6 @@ export default class UserContestsStore extends Store {
   }
 
   async vote(contest, votes) {
-    console.log("vote", contest, votes);
     return this.action(async () => {
       await ServiceClient.request(`/contest/${contest.id}/vote`, "PATCH", votes);
       setTimeout(() => this.refresh());

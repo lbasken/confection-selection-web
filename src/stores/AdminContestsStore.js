@@ -1,4 +1,4 @@
-import {Store} from "@d4lton/node-frontend";
+import {EventBus, Store} from "@d4lton/node-frontend";
 import ServiceClient from "../ServiceClient.js";
 
 export default class AdminContestsStore extends Store {
@@ -7,6 +7,11 @@ export default class AdminContestsStore extends Store {
     this.value = [];
     this.loading = true;
     this.refresh();
+    EventBus.register("contest", (event) => {
+      if (event.change === "modified") {
+        setTimeout(() => {if (!this._mutex.isLocked()) { this.refresh(); }});
+      }
+    });
   }
 
   async refresh() {

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {GoogleAuthProvider, EmailAuthProvider} from "firebase/auth";
 import Firebase from "../../Firebase.js";
 import ServiceClient from "../../ServiceClient.js";
@@ -6,6 +7,8 @@ import "firebaseui/dist/firebaseui.css";
 import "./SignInPage.css";
 
 export default function SignInPage() {
+
+  const navigate = useNavigate();
 
   const [container, setContainer] = useState();
 
@@ -24,11 +27,16 @@ export default function SignInPage() {
   }, [container]);
 
   function onFirebaseSignInSuccess(result) {
-    console.log("onFirebaseSignInSuccess", result);
-    if (result.additionalUserInfo.isNewUser) {
-      ServiceClient.request(`/user/${result.user.uid}`, "DELETE");
-      window.location.replace("/");
+    if (result.additionalUserInfo.isNewUser) { // if Firebase auth created a new user, remove it, we only want sign in here
+      ServiceClient
+        .request(`/user/${result.user.uid}`, "DELETE")
+        .then(async () => {
+          await Firebase.auth.signOut();
+          navigate("/", {replace: true});
+        });
+      return false;
     }
+    navigate("/", {replace: true});
     return false;
   }
 

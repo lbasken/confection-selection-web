@@ -7,8 +7,6 @@ import {Link} from "react-router-dom";
 
 export default function ContestCard(props) {
 
-  console.log("ContestCard", props);
-
   function renderCard() {
     return <Card sx={{ minWidth: 275 }}>
       <CardContent>

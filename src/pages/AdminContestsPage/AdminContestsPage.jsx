@@ -7,6 +7,7 @@ import {useStore} from "@d4lton/node-frontend";
 import CSDataGrid from "../../components/CSDataGrid/CSDataGrid.jsx";
 import ConfirmationDialog from "../../components/dialogs/ConfirmationDialog.jsx";
 import AdminContestsStore from "../../stores/AdminContestsStore.js";
+import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
 import "./AdminContestsPage.css";
 
 const columns = [
@@ -25,6 +26,24 @@ export default function AdminContestsPage() {
   const [rows, setRows] = useState([]);
 
   rowsRef.current = rows;
+
+  useEffect(() => {
+    if (contestsStore.error) {
+      console.log(contestsStore.error.message);
+      const dialog = showModal(
+        ErrorDialog,
+        {
+          title: "Error",
+          description: "Could not get the list of contests.",
+          confirm: "CLOSE",
+          onConfirm: () => {
+            dialog.hide();
+            navigate("/");
+          },
+        }
+      );
+    }
+  }, [contestsStore.error]);
 
   useEffect(() => {
     setRows(contests ?? []);

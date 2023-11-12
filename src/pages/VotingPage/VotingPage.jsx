@@ -1,23 +1,18 @@
 import React, {useEffect, useState} from "react";
-import "./VotingPage.css";
+import {useParams} from "react-router-dom";
 import {useStore} from "@d4lton/node-frontend";
 import UserContestsStore from "../../stores/UserContestsStore.js";
-import {useParams} from "react-router-dom";
 import CategorySelector from "../VotingPage/CategorySelector/CategorySelector.jsx";
 import ContestCard from "../../components/ContestCard/ContestCard.jsx";
-import {MenuItem} from "@mui/material";
+import ServiceClient from "../../ServiceClient.js";
+import "./VotingPage.css";
 
 export default function VotingPage() {
 
   const [contests, contestsStore] = useStore(UserContestsStore);
   const [contest, setContest] = useState();
+  const [categories, setCategories] = useState([]);
   const params = useParams();
-
-  const categories = [
-    {id: "best_tasting", label: "Best Tasting"},
-    {id: "most_festive", label: "Most Festive"},
-    {id: "most_creative", label: "Most Creative"}
-  ];
 
   useEffect(() => {
     if (!params.id || !Array.isArray(contests)) { return; }
@@ -25,24 +20,30 @@ export default function VotingPage() {
   }, [params.id, contests]);
 
   useEffect(() => {
-    console.log("contest", contest);
+    if (!contest) { return; }
+    ServiceClient
+      .request(`/contest/${contest.id}/categories`)
+      .then(categories => setCategories(categories))
+      .catch(error => {
+        console.log(error.message);
+      });
   }, [contest]);
 
   function renderCategories() {
-    return categories.map(category => <CategorySelector contest={contest} category={category} key={category.id} />);
+    return categories?.map(category => <CategorySelector contest={contest} category={category} key={category.id} />);
   }
 
-  if(!contest) {
+  if (!contest) {
     return <div className="voting-page">
       Loading
     </div>
   }
 
   return <div className="voting-page">
-      <ContestCard className="contest-card" contest={contest} />
-      <div>
-          {renderCategories()}
-      </div>
+    <ContestCard className="contest-card" contest={contest} />
+    <div>
+      {renderCategories()}
+    </div>
   </div>
 
 }

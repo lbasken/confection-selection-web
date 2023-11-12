@@ -23,6 +23,8 @@ export default function App() {
 
   function renderSignedOutRoutes() {
     return <>
+      <Route path="/" element={<SignInPage />} />
+      <Route path="/sign-in" element={<SignInPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </>
@@ -37,6 +39,7 @@ export default function App() {
       {user?.role === "admin" && <Route path="/contest-results/:id?" element={<ContestResultsPage />} />}
       {user?.role === "admin" && <Route path="/invite-user" element={<InviteUserPage />} />}
       <Route path="/contests" element={<ContestPage />} />
+      <Route path="/sign-in" element={<SignInPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </>;

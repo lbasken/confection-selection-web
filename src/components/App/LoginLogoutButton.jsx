@@ -3,32 +3,28 @@ import {Button} from "@mui/material";
 import {GoogleAuthProvider, signInWithPopup, signOut} from "firebase/auth";
 import Firebase from "../../Firebase.js";
 import useAuth from "../../hooks/useAuth.js";
+import {useNavigate} from "react-router-dom";
 
 export default function LoginLogoutButton() {
 
-    const {user} = useAuth();
+  const navigate = useNavigate();
+  const {user} = useAuth();
 
-    function signInWithGoogle() {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(Firebase.auth, provider)
-            .then(() => {
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
+  function signOut() {
+    Firebase.auth
+      .signOut()
+      .then(() => {
+        navigate("/", {replace: true});
+      });
+  }
 
-    function googleSignOut() {
-        signOut(Firebase.auth).then(() => {
-            console.log("User signed out successfully.");
-        }).catch((error) => {
-            console.error(error);
-        });
-    }
+  function signIn() {
+    navigate("/sign-in", {replace: true});
+  }
 
-    if (user) {
-        return <Button id="login-logout" onClick={googleSignOut} color="inherit">Logout</Button>;
-    } else {
-        return <Button id="login-logout" onClick={signInWithGoogle} color="inherit">Login</Button>;
-    }
+  if (user) {
+    return <Button id="login-logout" onClick={signOut} color="inherit">Logout</Button>;
+  } else {
+    return <Button id="login-logout" onClick={signIn} color="inherit">Login</Button>;
+  }
 }

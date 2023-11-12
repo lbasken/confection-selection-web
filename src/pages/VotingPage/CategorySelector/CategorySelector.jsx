@@ -16,7 +16,6 @@ export default function CategorySelector({contest, category}) {
   useEffect(() => {
     if (!contest?.entries.length || !category || !users.length) { return; }
     setOptions(contest.entries.map(entry => ({id: entry.id, label: entry.entry})));
-    console.log(contest, category);
     const votes = contest.votes?.[category.id];
     if (!votes) { return; }
     setValue(votes.id);
@@ -36,7 +35,7 @@ export default function CategorySelector({contest, category}) {
   }
 
   return <div className="category-selector">
-    <FormControl fullWidth>
+    <FormControl fullWidth disabled={contestsStore.loading}>
       <InputLabel>{category?.label}</InputLabel>
       <Select value={value} label={category?.label} onChange={event => setValue(event.target.value)}>{renderOptions()}</Select>
     </FormControl>
