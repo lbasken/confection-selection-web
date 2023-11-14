@@ -8,6 +8,19 @@
   flex-direction: column;
   gap: 1em;
 
+  .voting-select {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .contest-card {
+    background-color: #597059;
+    border: solid black;
+  }
+
+
   @media (min-width: 0px) {
     @media (orientation: landscape) {
       inset: 48px 0 0 0;

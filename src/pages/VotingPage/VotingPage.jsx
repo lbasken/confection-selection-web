@@ -5,7 +5,7 @@ import UserContestsStore from "../../stores/UserContestsStore.js";
 import CategorySelector from "../VotingPage/CategorySelector/CategorySelector.jsx";
 import ContestCard from "../../components/ContestCard/ContestCard.jsx";
 import ServiceClient from "../../ServiceClient.js";
-import "./VotingPage.css";
+import "../Page.css";
 
 export default function VotingPage() {
 
@@ -39,9 +39,9 @@ export default function VotingPage() {
     </div>
   }
 
-  return <div className="voting-page">
+  return <div className="page">
     <ContestCard className="contest-card" contest={contest} />
-    <div>
+    <div className="voting-select">
       {renderCategories()}
     </div>
   </div>
