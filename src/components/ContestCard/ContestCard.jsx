@@ -1,20 +1,20 @@
 import "./ContestCard.css";
+import * as React from "react";
+import {Link} from "react-router-dom";
 import {CardActionArea} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
-import {Link} from "react-router-dom";
 
 export default function ContestCard(props) {
 
   function renderCard() {
     return <Card className="contest-card" sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
+      <CardContent>"
+        <Typography className="contest-name" variant="h5" component="div">
           {props.contest.name}
         </Typography>
-        <Typography variant="body2">
+        <Typography className="contest-description" variant="body2">
           {props.contest.description}
         </Typography>
       </CardContent>
@@ -28,5 +28,4 @@ export default function ContestCard(props) {
   }
 
   return renderCard();
-
 }

@@ -1,11 +1,12 @@
+import "../Page.css";
+import "./VotingPage.css";
+import CategorySelector from "../VotingPage/CategorySelector/CategorySelector.jsx";
+import ContestCard from "../../components/ContestCard/ContestCard.jsx";
+import UserContestsStore from "../../stores/UserContestsStore.js";
+import ServiceClient from "../../ServiceClient.js";
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useStore} from "@d4lton/node-frontend";
-import UserContestsStore from "../../stores/UserContestsStore.js";
-import CategorySelector from "../VotingPage/CategorySelector/CategorySelector.jsx";
-import ContestCard from "../../components/ContestCard/ContestCard.jsx";
-import ServiceClient from "../../ServiceClient.js";
-import "../Page.css";
 
 export default function VotingPage() {
 
@@ -45,5 +46,4 @@ export default function VotingPage() {
       {renderCategories()}
     </div>
   </div>
-
 }

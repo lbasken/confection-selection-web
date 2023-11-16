@@ -1,1 +1,13 @@
+.page {
+  .voting-select {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
 
+  .contest-card {
+    background-color: #597059;
+    border: solid black;
+  }
+}

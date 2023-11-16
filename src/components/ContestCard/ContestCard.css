@@ -1,7 +1,8 @@
 .contest-card {
-  font-family: Barlow-Condensed-Regular, sans-serif;
-}
-
-.clickable-contest-card {
-  font-family: Barlow-Condensed-Regular, sans-serif;
+  .contest-name {
+    font-family: Barlow-Condensed-Regular, sans-serif;
+  }
+  .contest-description {
+    font-family: Barlow-Condensed-Regular, sans-serif;
+  }
 }

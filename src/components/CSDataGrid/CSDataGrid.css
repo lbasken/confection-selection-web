@@ -2,6 +2,11 @@
 
   width: 100%;
 
+  .table {
+    font-family: Barlow-Condensed-Regular, sans-serif;
+
+  }
+
   .MuiDataGrid-root {
     border-color: #808080;
     .MuiDataGrid-cell:focus,
@@ -16,5 +21,4 @@
   &.cs-data-grid-auto-height {
     flex-grow: 1;
   }
-
 }

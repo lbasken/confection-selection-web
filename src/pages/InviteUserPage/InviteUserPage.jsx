@@ -1,12 +1,12 @@
+import "../Page.css";
+import "./InviteUserPage.css";
+import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
+import ServiceClient from "../../ServiceClient.js";
+import Utilities from "../../Utilities.js";
 import React, {useState} from "react";
 import {Button, TextField} from "@mui/material";
 import {Field, Form, Formik} from "formik";
 import {useModal} from "mui-modal-provider";
-import ServiceClient from "../../ServiceClient.js";
-import Utilities from "../../Utilities.js";
-import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
-import "../Page.css";
-import "./InviteUserPage.css";
 
 export default function InviteUserPage() {
 

@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
 import "../Page.css";
+import "./ContestsPage.css";
+import ContestCard from "../../components/ContestCard/ContestCard.jsx";
+import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
+import UserContestsStore from "../../stores/UserContestsStore.js";
+import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 import {useModal} from "mui-modal-provider";
 import {useStore} from "@d4lton/node-frontend";
-import UserContestsStore from "../../stores/UserContestsStore.js";
-import ContestCard from "../../components/ContestCard/ContestCard.jsx";
-import ErrorDialog from "../../components/dialogs/ErrorDialog.jsx";
 
-export default function ContestPage() {
+export default function ContestsPage() {
 
   const [contests, contestsStore] = useStore(UserContestsStore);
   const {showModal} = useModal();
@@ -32,6 +33,6 @@ export default function ContestPage() {
   }, [contestsStore.error]);
 
   return <div className="page">
-    {contests?.map(contest => <ContestCard key={`contest_${contest.id}`} contest={contest} clickable />)}
+    {contests?.map(contest => <ContestCard className="contest-card" key={`contest_${contest.id}`} contest={contest} clickable />)}
   </div>
 }

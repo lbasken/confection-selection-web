@@ -1,9 +1,9 @@
+import "./CSDataGrid.css";
 import React, {useEffect, useState} from "react";
 import {DataGrid, GridRowModes} from "@mui/x-data-grid";
 import {LinearProgress} from "@mui/material";
 import CSDataGridToolbar from "./CSDataGridToolbar/CSDataGridToolbar.jsx";
 import {randomId} from "@mui/x-data-grid-generator";
-import "./CSDataGrid.css";
 
 export default function CSDataGrid(props) {
 
@@ -72,6 +72,7 @@ export default function CSDataGrid(props) {
 
   return <div className={`${classes.join(" ")}`}>
     <DataGrid
+      className="table"
       columns={columns ?? []}
       rows={rows ?? []}
       editMode="row"
