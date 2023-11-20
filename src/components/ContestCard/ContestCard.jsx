@@ -10,7 +10,7 @@ export default function ContestCard(props) {
 
   function renderCard() {
     return <Card className="contest-card" sx={{ minWidth: 275 }}>
-      <CardContent>"
+      <CardContent>
         <Typography className="contest-name" variant="h5" component="div">
           {props.contest.name}
         </Typography>

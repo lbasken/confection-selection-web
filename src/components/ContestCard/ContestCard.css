@@ -1,4 +1,7 @@
 .contest-card {
+
+  padding: 1px;
+
   .contest-name {
     font-family: Barlow-Condensed-Regular, sans-serif;
   }

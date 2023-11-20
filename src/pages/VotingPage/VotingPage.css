@@ -1,5 +1,6 @@
 .page {
-  .voting-select {
+  .voting-select div{
+    font-family: Barlow-Condensed-Regular, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 20px;
