@@ -1,8 +1,8 @@
 import "../Page.css";
 import "./HomePage.css";
 import MenuCard from "../../components/MenuCard/MenuCard.jsx";
-import React from "react";
 import useAuth from "../../hooks/useAuth.js";
+import React from "react";
 
 export default function HomePage() {
 
