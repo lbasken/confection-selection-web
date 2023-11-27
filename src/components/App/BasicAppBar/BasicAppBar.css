@@ -8,8 +8,11 @@
 
   .appbar {
     .typography {
-      padding-right: 1100px;
+      padding-left: 70px;
       font-family: Barlow-Condensed-Semibold, sans-serif;
+    }
+    .typography a {
+      color: white;
     }
   }
 }

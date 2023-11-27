@@ -25,6 +25,6 @@ export default function LoginLogoutButton() {
   if (user) {
     return <Button id="login-logout" onClick={signOut} color="inherit">Logout</Button>;
   } else {
-    return <Button id="login-logout" onClick={signIn} color="inherit">Login</Button>;
+    return <Button disabled="true" id="login-logout" onClick={signIn} color="inherit"></Button>;
   }
 }

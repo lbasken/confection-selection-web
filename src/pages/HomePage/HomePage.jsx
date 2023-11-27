@@ -17,7 +17,6 @@ export default function HomePage() {
   }
 
   return <div className="home-page page">
-      <div className="home-page-title">Home Page</div>
       <MenuCard title="Contests" body="View my active contests" route="/contests" />
     {renderAdminCards()}
   </div>
