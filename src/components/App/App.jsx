@@ -1,6 +1,4 @@
-import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ModalProvider from "mui-modal-provider";
+import './App.css'
 import useAuth from "../../hooks/useAuth.js";
 import HomePage from "../../pages/HomePage/HomePage.jsx";
 import SignInPage from "../../pages/SignInPage/SignInPage.jsx";
@@ -10,10 +8,12 @@ import AdminContestsPage from "../../pages/AdminContestsPage/AdminContestsPage.j
 import AdminCreateContestPage from "../../pages/AdminCreateContestPage/AdminCreateContestPage.jsx";
 import ContestsPage from "../../pages/ContestsPage/ContestsPage.jsx";
 import BasicAppBar from "./BasicAppBar/BasicAppBar.jsx";
-import './App.css'
 import ContestResultsPage from "../../pages/ContestResultsPage/ContestResultsPage.jsx";
 import InviteUserPage from "../../pages/InviteUserPage/InviteUserPage.jsx";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage.jsx";
+import React from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ModalProvider from "mui-modal-provider";
 
 export default function App() {
 

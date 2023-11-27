@@ -1,4 +1,21 @@
 .menu-card div {
   background-color: #597059;
   border: solid black;
+
+  .card-title {
+    font-family: Barlow-Condensed-Regular, sans-serif;
+    font-size: 25px;
+  }
+
+  .card-body {
+    font-family: Barlow-Condensed-Regular, sans-serif;
+  }
+}
+
+.menu-card a:hover {
+  color: black;
+}
+
+.menu-card a {
+  color: black;
 }

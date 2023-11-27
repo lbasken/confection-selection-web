@@ -2,7 +2,6 @@
 
   .invite-user-page-title {
     font-family: Barlow-Condensed-Regular, sans-serif;
-
     font-size: 1.5rem;
   }
 
@@ -29,7 +28,5 @@
       background-color: white;
       padding: 1em;
     }
-
   }
-
 }

@@ -12,10 +12,10 @@ export default function MenuCard(props) {
   <Card className="menu-card" sx={{ minWidth: 275 }}>
     <CardActionArea component={Link} to={props.route}>
     <CardContent>
-      <Typography variant="body2">
+      <Typography className="card-title" variant="body2">
         {props.title}
       </Typography>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      <Typography className="card-body" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         {props.body}
       </Typography>
     </CardContent>
