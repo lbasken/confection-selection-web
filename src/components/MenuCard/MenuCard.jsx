@@ -8,7 +8,8 @@ import {Link} from "react-router-dom";
 
 export default function MenuCard(props) {
 
-  return <Card sx={{ minWidth: 275 }}>
+  return <div>
+  <Card className="menu-card" sx={{ minWidth: 275 }}>
     <CardActionArea component={Link} to={props.route}>
     <CardContent>
       <Typography variant="body2">
@@ -20,4 +21,5 @@ export default function MenuCard(props) {
     </CardContent>
     </CardActionArea>
   </Card>
+  </div>
 }
