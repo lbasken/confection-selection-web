@@ -33,11 +33,11 @@ export default function SignInPage() {
         .request(`/user/${result.user.uid}`, "DELETE")
         .then(async () => {
           await Firebase.auth.signOut();
-          navigate("/", {replace: true});
+          window.location.assign("/");
         });
       return false;
     }
-    navigate("/", {replace: true});
+    window.location.assign("/");
     return false;
   }
 

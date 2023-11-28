@@ -56,13 +56,13 @@ export default function SignUpPage() {
     if (result.user.email !== payload.email) {
       Firebase.auth.signOut();
       if (result.additionalUserInfo.isNewUser) { ServiceClient.request(`/user/${result.user.uid}`, "DELETE"); }
-      window.location.replace(`/sign-up?token=${searchParams.get("token")}&error=IE`);
+      window.location.assign(`/sign-up?token=${searchParams.get("token")}&error=IE`);
       return false;
     }
     ServiceClient
       .request(`/user/${result.user.email}/invited`, "POST", {payload})
       .then(() => {
-        window.location.replace("/");
+        window.location.assign("/");
       })
       .catch(error => showError(error));
     return false;
