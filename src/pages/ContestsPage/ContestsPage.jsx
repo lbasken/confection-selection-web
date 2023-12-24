@@ -32,7 +32,16 @@ export default function ContestsPage() {
     }
   }, [contestsStore.error]);
 
+  function renderNoContests() {
+    return <div>No active contests.</div>
+  }
+
+  function renderContests() {
+    if (!contests?.length) { return renderNoContests(); }
+    return contests?.map(contest => <ContestCard className="contest-card" key={`contest_${contest.id}`} contest={contest} clickable />);
+  }
+
   return <div className="page">
-    {contests?.map(contest => <ContestCard className="contest-card" key={`contest_${contest.id}`} contest={contest} clickable />)}
+    {renderContests()}
   </div>
 }
