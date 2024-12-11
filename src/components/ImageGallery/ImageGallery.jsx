@@ -3,10 +3,12 @@ import "./ImageGallery.css";
 
 export default function ImageGallery() {
   return <div className="polaroid">
-    <img src="/src/assets/images/christmas2023.JPG" alt="christmas 2023" />
+    <img src="https://webdev-images.s3.us-east-1.amazonaws.com/confection-selection/chr2023.JPG" alt="christmas 2023" />
     <div className="container">
-      <p>Christmas 2023 winners</p>
-      <p>Celeste, Chris, Halley</p>
+      <h2>Christmas 2023 winners!</h2>
+      <p><b><i>Best Tasting</i></b>... Celeste's Powder Puff Cookies</p>
+      <p><b><i>Most Creative</i></b>... Chris' 'Letters to Santa' Cookies</p>
+      <p><b><i>Most Festive</i></b>... Halley's Grinch Cookies</p>
     </div>
   </div>
 }
